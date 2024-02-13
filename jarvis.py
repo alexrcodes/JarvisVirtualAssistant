@@ -20,7 +20,6 @@ import pyjokes
 import pyautogui
 import json
 
-
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 # print(voices[0].id)
@@ -54,7 +53,7 @@ def takecommand():  #listens for audio commands
 #to wish
 def wish(): 
     hour = int(datetime.datetime.now().hour)
-    #allows clive to tell me the current time, depending on the hour
+    #allows jarvis to tell me the current time, depending on the hour
     if hour>=0 and hour<=12:
         speak("good morning")
     elif hour>12 and hour<18:
@@ -88,31 +87,15 @@ if __name__ == '__main__':
         query = takecommand().lower()
 
 #logic building for tasks
-        if "open notepad" in query:
-            path = "C:\\Windows\\system32\\notepad.exe"
-            os.startfile(path)
-
-        elif "open command prompt" in query:
-            path = "C:\\Windows\\system32\\cmd.exe"
-            os.startfile(path)
+        if  "open google" in query:
+            speak("sir, what should i search")
+            cm = takecommand()
+            webbrowser.open(f"https://www.google.com/search?q={cm}")
 
         elif "open youtube" in query:
             webbrowser.open("www.youtube.com")
             speak("opening youtube sir")
-        
-        elif "open linkedin" in query:
-            webbrowser.open("www.linkedin.com")
-            speak("opening linkedin sir")
 
-        elif "open stackoverflow" in query:
-            webbrowser.open("www.stackoverflow.com")
-            speak("opening stackoverflow sir")
-
-        elif "open google" in query:
-            speak("sir, what should i search")
-            cm = takecommand()
-            webbrowser.open(f"https://www.google.com/search?q={cm}")
-        
         elif "check email" in query:
             webbrowser.open("https://mail.google.com/mail/u/0/#inbox")
             speak("checking email inbox sir")
@@ -126,13 +109,7 @@ if __name__ == '__main__':
             webbrowser.open("https://mail.google.com/mail/u/0/#inbox?compose=new")
             speak("setting up new email message sir...")
 
-        elif "play music" in query:
-            music_dir = "C:\\music"
-            songs = os.listdir(music_dir)
-            #rd = random.choice(songs)   
-            os.startfile(os.path.join(music_dir, songs[1])) #allows me to start Groove Music, to select a song from folder_view
-
-        elif "Play song on Youtube" in query:
+        elif "play song" in query:
             cm = takecommand()
             kit.playonyt(f"{cm}")
 
@@ -143,7 +120,22 @@ if __name__ == '__main__':
             speak("according to wikipedia")
             speak(results)
 
-# sleep jarvis
+#
+##
+###
+####
+#####
+######
+####### MANY MORE COMMMANDS TO COME
+                                    #######
+                                     ######
+                                      #####
+                                       ####
+                                        ###
+                                         ##
+                                          #
+            
+# to sleep jarvis
         elif "you can sleep" in query:
             speak("thanks for using me sir, have a good day.")
             sys.exit()
